@@ -1,0 +1,12 @@
+{
+    "name": "yourcompany/freescout-business-days",
+    "description": "Business Day workflow conditions for FreeScout",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Modules\\BusinessDays\\": ""
+        }
+    },
+    "minimum-stability": "stable"
+}
