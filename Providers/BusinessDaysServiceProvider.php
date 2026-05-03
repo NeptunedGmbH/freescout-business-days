@@ -48,6 +48,15 @@ class BusinessDaysServiceProvider extends ServiceProvider
                 ],
             ];
 
+            $config['dates']['items']['business_days_waiting_since'] = [
+                'title'     => __('businessdays::messages.cond_business_days_waiting_since'),
+                'operators' => [
+                    'greater_than' => __('businessdays::messages.op_greater_than'),
+                    'less_than'    => __('businessdays::messages.op_less_than'),
+                    'equal'        => __('businessdays::messages.op_equal'),
+                ],
+            ];
+
             return $config;
         }, 20, 2);
 
@@ -68,6 +77,32 @@ class BusinessDaysServiceProvider extends ServiceProvider
                     return $operator === 'yes' ? $isBusinessDay : !$isBusinessDay;
 
                 case 'business_days_since_last_reply':
+                    $timestamp = $conversation->last_reply_at ?? $conversation->updated_at;
+                    if (!$timestamp) {
+                        return false;
+                    }
+                    $elapsed = $this->calcBusinessDays(
+                        Carbon::parse($timestamp),
+                        Carbon::now()
+                    );
+                    $days = (int) $value;
+                    return match ($operator) {
+                        'greater_than' => $elapsed > $days,
+                        'less_than'    => $elapsed < $days,
+                        'equal'        => $elapsed === $days,
+                        default        => false,
+                    };
+
+                case 'business_days_waiting_since':
+                    if ($conversation->last_reply_from !== \App\Conversation::PERSON_CUSTOMER) {
+                        return false;
+                    }
+                    if (!in_array($conversation->status, [
+                        \App\Conversation::STATUS_ACTIVE,
+                        \App\Conversation::STATUS_PENDING,
+                    ])) {
+                        return false;
+                    }
                     $timestamp = $conversation->last_reply_at ?? $conversation->updated_at;
                     if (!$timestamp) {
                         return false;
