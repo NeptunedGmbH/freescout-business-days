@@ -57,6 +57,15 @@ class BusinessDaysServiceProvider extends ServiceProvider
                 ],
             ];
 
+            $config['dates']['items']['business_days_since_user_reply'] = [
+                'title'     => __('businessdays::messages.cond_business_days_since_user_reply'),
+                'operators' => [
+                    'greater_than' => __('businessdays::messages.op_greater_than'),
+                    'less_than'    => __('businessdays::messages.op_less_than'),
+                    'equal'        => __('businessdays::messages.op_equal'),
+                ],
+            ];
+
             return $config;
         }, 20, 2);
 
@@ -101,6 +110,27 @@ class BusinessDaysServiceProvider extends ServiceProvider
                         \App\Conversation::STATUS_ACTIVE,
                         \App\Conversation::STATUS_PENDING,
                     ])) {
+                        return false;
+                    }
+                    $timestamp = $conversation->last_reply_at ?? $conversation->updated_at;
+                    if (!$timestamp) {
+                        return false;
+                    }
+                    $elapsed = $this->calcBusinessDays(
+                        Carbon::parse($timestamp),
+                        Carbon::now()
+                    );
+                    $days = (int) $value;
+                    return match ($operator) {
+                        'greater_than' => $elapsed > $days,
+                        'less_than'    => $elapsed < $days,
+                        'equal'        => $elapsed === $days,
+                        default        => false,
+                    };
+
+                case 'business_days_since_user_reply':
+                    // Only evaluate when the last reply in the conversation was from an agent.
+                    if ($conversation->last_reply_from === \App\Conversation::PERSON_CUSTOMER) {
                         return false;
                     }
                     $timestamp = $conversation->last_reply_at ?? $conversation->updated_at;
