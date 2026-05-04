@@ -9,7 +9,7 @@ A custom module for [FreeScout](https://freescout.net) that adds four new condit
 | **Business Days Waiting Since Last Customer Reply** | Numeric | Counts business days since the last customer reply; only fires when the conversation is Active or Pending and the most recent reply came from a customer |
 | **Business Days Since Last Agent Reply** | Numeric | Counts business days since the last agent reply; only fires when the most recent reply in the conversation was from an agent |
 
-All conditions are powered by [Laravel Carbon](https://carbon.nesbot.com) and respect a configurable list of company holidays.
+All conditions are powered by [Laravel Carbon](https://carbon.nesbot.com) and respect a configurable holiday list. The module ships pre-filled with all Hessian public holidays through 2050.
 
 ---
 
@@ -44,15 +44,29 @@ After installation, go to **Manage → Modules** and activate **Business Days**.
 
 ## Configuration
 
-Edit `Config/config.php` to define your company holidays. Dates must be in `Y-m-d` format and match the timezone of your FreeScout server.
+`Config/config.php` contains the `company_holidays` array. It is pre-filled with all **10 public holidays for Hessen (Germany) from 2026 through 2050**, sourced from [nager.date](https://date.nager.at). The following holidays are included for each year:
+
+| Holiday | Date |
+|---|---|
+| Neujahr | 01-01 |
+| Karfreitag | moveable |
+| Ostermontag | moveable |
+| Tag der Arbeit | 05-01 |
+| Christi Himmelfahrt | moveable |
+| Pfingstmontag | moveable |
+| Fronleichnam | moveable (Hessen only) |
+| Tag der Deutschen Einheit | 10-03 |
+| 1. Weihnachtstag | 12-25 |
+| 2. Weihnachtstag | 12-26 |
+
+To add company-specific closures (e.g. Brückentage), simply append additional dates in `Y-m-d` format to the array:
 
 ```php
 'company_holidays' => [
-    '2026-01-01', // New Year's Day
-    '2026-04-03', // Good Friday
-    '2026-05-01', // Labour Day
-    '2026-12-25', // Christmas Day
-    '2026-12-26', // Boxing Day
+    // ... pre-filled Hessian holidays 2026–2050 ...
+
+    // Company-specific additions:
+    '2026-05-15', // Brückentag
 ],
 ```
 
