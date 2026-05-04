@@ -3,7 +3,7 @@
     "alias": "businessdays",
     "description": "Adds Business Day workflow conditions to FreeScout.",
     "keywords": ["business days", "sla", "workflows", "holidays"],
-    "version": "1.2.0",
+    "version": "1.2.1",
     "active": 1,
     "order": 1000,
     "providers": [

@@ -95,12 +95,12 @@ class BusinessDaysServiceProvider extends ServiceProvider
                         Carbon::now()
                     );
                     $days = (int) $value;
-                    return match ($operator) {
-                        'greater_than' => $elapsed > $days,
-                        'less_than'    => $elapsed < $days,
-                        'equal'        => $elapsed === $days,
-                        default        => false,
-                    };
+                    switch ($operator) {
+                        case 'greater_than': return $elapsed > $days;
+                        case 'less_than':    return $elapsed < $days;
+                        case 'equal':        return $elapsed === $days;
+                        default:             return false;
+                    }
 
                 case 'business_days_waiting_since':
                     if ($conversation->last_reply_from !== \App\Conversation::PERSON_CUSTOMER) {
@@ -121,12 +121,12 @@ class BusinessDaysServiceProvider extends ServiceProvider
                         Carbon::now()
                     );
                     $days = (int) $value;
-                    return match ($operator) {
-                        'greater_than' => $elapsed > $days,
-                        'less_than'    => $elapsed < $days,
-                        'equal'        => $elapsed === $days,
-                        default        => false,
-                    };
+                    switch ($operator) {
+                        case 'greater_than': return $elapsed > $days;
+                        case 'less_than':    return $elapsed < $days;
+                        case 'equal':        return $elapsed === $days;
+                        default:             return false;
+                    }
 
                 case 'business_days_since_user_reply':
                     // Only evaluate when the last reply in the conversation was from an agent.
@@ -142,12 +142,12 @@ class BusinessDaysServiceProvider extends ServiceProvider
                         Carbon::now()
                     );
                     $days = (int) $value;
-                    return match ($operator) {
-                        'greater_than' => $elapsed > $days,
-                        'less_than'    => $elapsed < $days,
-                        'equal'        => $elapsed === $days,
-                        default        => false,
-                    };
+                    switch ($operator) {
+                        case 'greater_than': return $elapsed > $days;
+                        case 'less_than':    return $elapsed < $days;
+                        case 'equal':        return $elapsed === $days;
+                        default:             return false;
+                    }
 
                 default:
                     return $result;
