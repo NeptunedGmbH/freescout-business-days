@@ -9,8 +9,8 @@
     "active": 1,
     "order": 1000,
     "detailsUrl": "https://github.com/NeptunedGmbH/freescout-business-days/releases/tag/v1.3.4",
-    "latestVersionUrl": "https://raw.githubusercontent.com/NeptunedGmbH/freescout-business-days/refs/heads/main/module.json",
-    "latestVersionZipUrl": "https://github.com/NeptunedGmbH/freescout-business-days/archive/refs/tags/v1.3.4.zip",
+    "latestVersionUrl": "https://raw.githubusercontent.com/NeptunedGmbH/freescout-business-days/refs/heads/main/version.txt",
+    "latestVersionZipUrl": "https://github.com/NeptunedGmbH/freescout-business-days/releases/download/v1.3.4/BusinessDays.zip",
     "changelogUrl": "https://github.com/NeptunedGmbH/freescout-business-days/releases/tag/v1.3.4",
     "providers": [
         "Modules\\BusinessDays\\Providers\\BusinessDaysServiceProvider"
