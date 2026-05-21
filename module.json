@@ -3,9 +3,12 @@
     "alias": "businessdays",
     "description": "Adds Business Day workflow conditions to FreeScout.",
     "keywords": ["business days", "sla", "workflows", "holidays"],
-    "version": "1.3.0",
+    "version": "1.3.1",
     "active": 1,
     "order": 1000,
+    "latestVersionUrl": "https://raw.githubusercontent.com/NeptunedGmbH/freescout-business-days/main/module.json",
+    "latestVersionZipUrl": "https://github.com/NeptunedGmbH/freescout-business-days/archive/refs/tags/v1.3.1.zip",
+    "changelogUrl": "https://github.com/NeptunedGmbH/freescout-business-days/releases",
     "providers": [
         "Modules\\BusinessDays\\Providers\\BusinessDaysServiceProvider"
     ],
