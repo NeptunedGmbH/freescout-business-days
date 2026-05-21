@@ -5,13 +5,13 @@
     "author": "NeptunedGmbH",
     "authorUrl": "https://github.com/NeptunedGmbH",
     "keywords": ["business days", "sla", "workflows", "holidays"],
-    "version": "1.3.3",
+    "version": "1.3.4",
     "active": 1,
     "order": 1000,
-    "detailsUrl": "https://github.com/NeptunedGmbH/freescout-business-days/releases/tag/v1.3.3",
-    "latestVersionUrl": "https://raw.githubusercontent.com/NeptunedGmbH/freescout-business-days/main/module.json",
-    "latestVersionZipUrl": "https://github.com/NeptunedGmbH/freescout-business-days/archive/refs/tags/v1.3.3.zip",
-    "changelogUrl": "https://github.com/NeptunedGmbH/freescout-business-days/releases/tag/v1.3.3",
+    "detailsUrl": "https://github.com/NeptunedGmbH/freescout-business-days/releases/tag/v1.3.4",
+    "latestVersionUrl": "https://raw.githubusercontent.com/NeptunedGmbH/freescout-business-days/refs/heads/main/module.json",
+    "latestVersionZipUrl": "https://github.com/NeptunedGmbH/freescout-business-days/archive/refs/tags/v1.3.4.zip",
+    "changelogUrl": "https://github.com/NeptunedGmbH/freescout-business-days/releases/tag/v1.3.4",
     "providers": [
         "Modules\\BusinessDays\\Providers\\BusinessDaysServiceProvider"
     ],
