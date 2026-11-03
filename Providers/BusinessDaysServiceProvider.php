@@ -16,7 +16,12 @@ class BusinessDaysServiceProvider extends ServiceProvider
         $this->registerHooks();
     }
 
-    public function register(): void {}
+    public function register(): void
+    {
+        $this->commands([
+            \Modules\BusinessDays\Console\HealthCommand::class,
+        ]);
+    }
 
     protected function registerHooks(): void
     {

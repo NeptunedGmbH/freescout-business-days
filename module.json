@@ -11,7 +11,9 @@
     "order": 1000,
     "detailsUrl": "https://github.com/NeptunedGmbH/freescout-business-days/releases/tag/v1.3.4",
     "latestVersionUrl": "https://raw.githubusercontent.com/NeptunedGmbH/freescout-business-days/refs/heads/main/version.txt",
-    "latestVersionZipUrl": "https://github.com/NeptunedGmbH/freescout-business-days/releases/download/v1.3.4/BusinessDays.zip",
+    "latestVersionZipUrl": "https://github.com/NeptunedGmbH/freescout-business-days/releases/latest/download/BusinessDays.zip",
+    "sha256sumsUrl": "https://github.com/NeptunedGmbH/freescout-business-days/releases/latest/download/SHA256SUMS",
+    "healthCommand": "businessdays:health",
     "changelogUrl": "https://github.com/NeptunedGmbH/freescout-business-days/releases/tag/v1.3.4",
     "providers": [
         "Modules\\BusinessDays\\Providers\\BusinessDaysServiceProvider"
